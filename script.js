@@ -114,6 +114,10 @@ function handleBackspace() {
 document.querySelector('.calc-keys').addEventListener('click', function(e) {
   const btn = e.target.closest('.key');
   if (!btn) return;
+  btn.classList.remove('pressed');
+  void btn.offsetWidth;
+  btn.classList.add('pressed');
+  btn.addEventListener('animationend', () => btn.classList.remove('pressed'), { once: true });
   const action = btn.dataset.action;
   const value = btn.dataset.value;
   if (value !== undefined) { handleNumber(value); return; }

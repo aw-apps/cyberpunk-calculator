@@ -145,6 +145,14 @@ body {
 
 .key:active { transform: scale(0.93); }
 
+@keyframes key-press-glow {
+  0%   { box-shadow: 0 0 0px transparent; }
+  40%  { box-shadow: 0 0 14px #00ffff, 0 0 28px #00ffff66; }
+  100% { box-shadow: 0 0 0px transparent; }
+}
+
+.key.pressed { animation: key-press-glow 0.35s ease-out forwards; }
+
 .key-fn {
   background: var(--key-fn);
   color: var(--cyan);
