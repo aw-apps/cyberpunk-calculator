@@ -2,6 +2,7 @@
 
 const display = document.getElementById('display');
 const expression = document.getElementById('expression');
+const calcDisplay = document.querySelector('.calc-display');
 
 const state = {
   current: '0',
@@ -85,6 +86,10 @@ function handleEquals() {
   state.operand = null;
   state.waitingForOperand = false;
   state.justEvaluated = true;
+  calcDisplay.classList.remove('flash');
+  void calcDisplay.offsetWidth;
+  calcDisplay.classList.add('flash');
+  calcDisplay.addEventListener('animationend', () => calcDisplay.classList.remove('flash'), { once: true });
 }
 
 function handleAC() {
