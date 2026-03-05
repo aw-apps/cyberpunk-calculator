@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBERPUNK CALC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="calc-wrapper">
+    <div class="calc-header">CYBER<span>CALC</span></div>
+    <div class="calc-display">
+      <div class="calc-expression" id="expression"></div>
+      <div class="calc-screen" id="display">0</div>
+    </div>
+    <div class="calc-keys">
+      <button class="key key-fn" data-action="ac">AC</button>
+      <button class="key key-fn" data-action="sign">+/-</button>
+      <button class="key key-fn" data-action="percent">%</button>
+      <button class="key key-op" data-action="divide">/</button>
+
+      <button class="key key-num" data-value="7">7</button>
+      <button class="key key-num" data-value="8">8</button>
+      <button class="key key-num" data-value="9">9</button>
+      <button class="key key-op" data-action="multiply">x</button>
+
+      <button class="key key-num" data-value="4">4</button>
+      <button class="key key-num" data-value="5">5</button>
+      <button class="key key-num" data-value="6">6</button>
+      <button class="key key-op" data-action="subtract">-</button>
+
+      <button class="key key-num" data-value="1">1</button>
+      <button class="key key-num" data-value="2">2</button>
+      <button class="key key-num" data-value="3">3</button>
+      <button class="key key-op" data-action="add">+</button>
+
+      <button class="key key-num key-zero" data-value="0">0</button>
+      <button class="key key-num" data-value=".">.</button>
+      <button class="key key-eq" data-action="equals">=</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
