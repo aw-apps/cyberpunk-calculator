@@ -19,6 +19,8 @@ function updateDisplay(val) {
 
 function showError(msg) {
   display.textContent = msg;
+  display.classList.remove('error');
+  void display.offsetWidth;
   display.classList.add('error');
   expression.textContent = '';
   Object.assign(state, { current: '0', operator: null, operand: null, waitingForOperand: false, justEvaluated: false });

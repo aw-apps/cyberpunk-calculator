@@ -130,7 +130,19 @@ body {
 
 .calc-display.flash { animation: screen-flash 0.4s ease-out; }
 
-.calc-screen.error { color: var(--magenta); text-shadow: var(--glow-magenta); }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+}
+
+.calc-screen.error {
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+  animation: shake 0.4s ease-out;
+}
 
 .calc-keys {
   display: grid;
