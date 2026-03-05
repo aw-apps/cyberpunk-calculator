@@ -37,6 +37,24 @@ body {
   border-radius: 12px;
   padding: 20px;
   box-shadow: var(--glow-cyan), inset 0 0 30px rgba(0,255,255,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+  border-radius: 12px;
 }
 
 .calc-header {
@@ -47,7 +65,19 @@ body {
   margin-bottom: 16px;
   text-transform: uppercase;
 }
-.calc-header span { color: var(--cyan); text-shadow: var(--glow-cyan); }
+.calc-header span {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+  animation: flicker 4s infinite;
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; text-shadow: var(--glow-cyan); }
+  96% { opacity: 0.4; text-shadow: none; }
+  97% { opacity: 1; text-shadow: var(--glow-cyan); }
+  98% { opacity: 0.2; text-shadow: none; }
+  99% { opacity: 1; text-shadow: var(--glow-cyan); }
+}
 
 .calc-display {
   background: #050510;
@@ -79,6 +109,18 @@ body {
   text-align: right;
   line-height: 1.2;
   transition: color 0.15s;
+}
+
+.calc-screen::after {
+  content: '_';
+  animation: blink-cursor 1s step-end infinite;
+  color: var(--green);
+  opacity: 1;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 .calc-screen.error { color: var(--magenta); text-shadow: var(--glow-magenta); }
 
