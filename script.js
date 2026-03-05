@@ -2,6 +2,7 @@
 
 const display = document.getElementById('display');
 const expression = document.getElementById('expression');
+const calcDisplay = document.querySelector('.calc-display');
 
 const state = {
   current: '0',
@@ -18,6 +19,8 @@ function updateDisplay(val) {
 
 function showError(msg) {
   display.textContent = msg;
+  display.classList.remove('error');
+  void display.offsetWidth;
   display.classList.add('error');
   expression.textContent = '';
   Object.assign(state, { current: '0', operator: null, operand: null, waitingForOperand: false, justEvaluated: false });
@@ -85,6 +88,10 @@ function handleEquals() {
   state.operand = null;
   state.waitingForOperand = false;
   state.justEvaluated = true;
+  calcDisplay.classList.remove('flash');
+  void calcDisplay.offsetWidth;
+  calcDisplay.classList.add('flash');
+  calcDisplay.addEventListener('animationend', () => calcDisplay.classList.remove('flash'), { once: true });
 }
 
 function handleAC() {
@@ -114,6 +121,10 @@ function handleBackspace() {
 document.querySelector('.calc-keys').addEventListener('click', function(e) {
   const btn = e.target.closest('.key');
   if (!btn) return;
+  btn.classList.remove('pressed');
+  void btn.offsetWidth;
+  btn.classList.add('pressed');
+  btn.addEventListener('animationend', () => btn.classList.remove('pressed'), { once: true });
   const action = btn.dataset.action;
   const value = btn.dataset.value;
   if (value !== undefined) { handleNumber(value); return; }

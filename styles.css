@@ -122,7 +122,27 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-.calc-screen.error { color: var(--magenta); text-shadow: var(--glow-magenta); }
+@keyframes screen-flash {
+  0%   { background: transparent; }
+  30%  { background: rgba(0, 255, 255, 0.12); }
+  100% { background: transparent; }
+}
+
+.calc-display.flash { animation: screen-flash 0.4s ease-out; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+}
+
+.calc-screen.error {
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+  animation: shake 0.4s ease-out;
+}
 
 .calc-keys {
   display: grid;
@@ -144,6 +164,14 @@ body {
 }
 
 .key:active { transform: scale(0.93); }
+
+@keyframes key-press-glow {
+  0%   { box-shadow: 0 0 0px transparent; }
+  40%  { box-shadow: 0 0 14px #00ffff, 0 0 28px #00ffff66; }
+  100% { box-shadow: 0 0 0px transparent; }
+}
+
+.key.pressed { animation: key-press-glow 0.35s ease-out forwards; }
 
 .key-fn {
   background: var(--key-fn);
