@@ -105,6 +105,12 @@ function handlePercent() {
   updateDisplay(state.current);
 }
 
+function handleBackspace() {
+  if (state.justEvaluated || state.waitingForOperand) return;
+  state.current = state.current.length > 1 ? state.current.slice(0, -1) : '0';
+  updateDisplay(state.current);
+}
+
 document.querySelector('.calc-keys').addEventListener('click', function(e) {
   const btn = e.target.closest('.key');
   if (!btn) return;
@@ -130,4 +136,5 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' || e.key === '=') { handleEquals(); return; }
   if (e.key === 'Escape') { handleAC(); return; }
   if (e.key === '%') { handlePercent(); return; }
+  if (e.key === 'Backspace') { handleBackspace(); return; }
 });
